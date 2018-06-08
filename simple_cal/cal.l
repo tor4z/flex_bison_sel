@@ -17,6 +17,6 @@ int yylval;
 [0-9]+	{yylval = atoi(yytext); return NUMBER;}
 \n	{return EOL;}
 [ \t]	{/* Ignore whitespace */}
-"//".*	{/* Comment, just ignore it! */}
+"//".*	{/* Comment, just ignore it! */ return COMM;}
 .	{printf("Unrecognised character %c\n", *yytext);}
 %%

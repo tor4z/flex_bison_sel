@@ -5,12 +5,14 @@
 %token NUMBER
 %token ADD SUB MUL DIV ABS
 %token OP CP
+%token COMM
 %token EOL
 
 %%
 
 calclist: /* nothing */
-        |calclist exp EOL {printf("=%d\n", $2);}
+        | calclist exp EOL 	{printf("=%d\n", $2);}
+	| calclist COMM EOL		{}
 	;
 
 exp : factor			{$$ = $1;}
@@ -27,7 +29,7 @@ term: NUMBER			{$$ = $1;}
     	| ABS term		{$$ = $2 > 0 ? $2 : -$2;}
     	| OP exp CP		{$$ = $2;}
 	;
-    	
+
 %%
 
 int main()
@@ -38,5 +40,5 @@ int main()
 
 void yyerror(char const *msg)
 {
-	fprintf(stderr, "error: %s\n", msg);
+	fprintf(stderr, "Calc error: %s\n", msg);
 }
