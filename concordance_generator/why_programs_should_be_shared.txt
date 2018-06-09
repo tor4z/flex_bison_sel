@@ -1,0 +1,26 @@
+Why Programs Should be Shared
+by Richard Stallman
+
+Richard Stallman wrote this text, which was found in a file dated May 1983, though it is not clear whether it was written then or earlier. In May 1983 he was privately considering plans to develop a free operating system, but he may not yet have decided to make it a Unix-like system rather than something like the MIT Lisp Machine.
+
+He had not yet conceptually distinguished the two meanings of “free;” this message is formulated in terms of gratis copies, but take for granted that this means users also have freedom.
+
+Five years ago one could take for granted that any useful program written at SAIL, MIT, CMU, etc. would be shared. Since then, these universities have started acting just like software houses—everything useful will be sold for an arm and a leg (usually after being written at gov't expense).
+
+People find all sorts of excuses why it's harmful to give away software. These supposed problems never bothered us back when we wanted to share, and haven't affected EMACS, so I suspect they are bogus.
+
+For example, people say that companies will “steal” it and sell it. If so, that would be no worse than Stanford selling it! At least people would have the choice of getting a free copy. Users want to buy maintained software? Then let people sell service contracts—but give the software itself free.
+
+I think I can dispose of any reasons you may think exist for not sharing software. But more important is the reason why we should share:
+
+We would get more done with the same amount of work, if artificial obstacles were removed. And we would feel more in harmony with everyone else.
+
+Sharing software is the form that scientific cooperation takes in the field of computer science. Universities used to defend the principle of scientific cooperation. Is it right for them to throw it over for profit?
+
+Should we let them?
+
+Right now graduate students here are working on programming projects that are specifically intended for sale. But if we create a climate of opinion like that of five years ago, the university wouldn't dare to do this. And if you start sharing, other people might start sharing with you.
+
+So let's start sharing again.
+
+
