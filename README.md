@@ -28,6 +28,7 @@ otherwise unmatched input to yyout.
 `%option nodefault` at the top of the scanner to tell it not to add a default rule and rather
 to report an error if the input rules don’t cover all possible input. 
 
+6. Flex output[See](https://stackoverflow.com/questions/16995864/how-to-redirect-yyout-to-char-buffer-in-gnu-flex)
 
 ## Bison quick notes
 
