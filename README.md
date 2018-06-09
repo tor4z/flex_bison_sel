@@ -1,6 +1,6 @@
 # flex & bison SEL
 
-## Flex
+## Flex quick notes
 
 1. a(bc|de) matches abc or ade. 
 
@@ -29,4 +29,6 @@ otherwise unmatched input to yyout.
 to report an error if the input rules don’t cover all possible input. 
 
 
-## Bison
+## Bison quick notes
+
+1. Advanced yylval: %union [More](https://www.tldp.org/HOWTO/Lex-YACC-HOWTO-6.html)
