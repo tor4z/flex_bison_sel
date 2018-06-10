@@ -81,7 +81,7 @@ we can continue to parse from the old position **NOT** from the begin of the fil
 FILE * 		yy_input_file
 char * 		yy_ch_buf	/* input buffer */
 char * 		yy_buf_pos 	/* current position in input buffer */
-yy_size_t 	yy_buf_size	* Size of input buffer in bytes, not including room for EOB */
+yy_size_t 	yy_buf_size	/* Size of input buffer in bytes, not including room for EOB */
 int 		yy_n_chars
 int 		yy_is_our_buffer
 int 		yy_is_interactive
