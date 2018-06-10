@@ -33,3 +33,5 @@ to report an error if the input rules don’t cover all possible input.
 ## Bison quick notes
 
 1. Advanced yylval: %union [More](https://www.tldp.org/HOWTO/Lex-YACC-HOWTO-6.html)
+
+2. Shift/Reduce
