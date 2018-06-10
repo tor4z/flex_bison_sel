@@ -110,6 +110,6 @@ double eval(struct ast *a);
 
 /* delete and free a AST */
 void treefree(struct ast *a);
-
+void shell();
 
 #endif // _CALC_H

@@ -429,8 +429,13 @@ void yyerror(const char *fmt, ...)
 }
 
 
-int main()
+void shell()
 {
 	printf("> ");
+}
+
+int main()
+{
+	shell();
 	return yyparse();
 }

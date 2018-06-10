@@ -81,11 +81,13 @@ calclist: /* nothing */
 	| calclist stmt EOL	{
 		printf("=%4.4g\n", eval($2));
 		treefree($2);
+		shell();
 	}
 	| calclist LET NAME '(' symlist ')' '=' list EOL {
 		dodef($3, $5, $8);
 		printf("Define %s\n", $3->name);
 	}
+	| calclist  EOL		{shell();}
 	| calclist error EOL	{yyerrok; printf("> ");}
 	;
 
