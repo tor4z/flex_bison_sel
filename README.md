@@ -74,6 +74,7 @@ yylex(); 		 /* or yyparse() or whatever calls the scanner*/
 
 ```
 11. `yy_buffer_state` Struct Reference
+
 Since `yy_buf_pos` field can remenber the position of the buffer,
 So when we use `yy_switch_to_buffer` to switch old buffer back, 
 we can continue to parse from the old position **NOT** from the begin of the file.
