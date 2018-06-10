@@ -34,4 +34,4 @@ to report an error if the input rules don’t cover all possible input.
 
 1. Advanced yylval: %union [More](https://www.tldp.org/HOWTO/Lex-YACC-HOWTO-6.html)
 
-2. Shift/Reduce
+2. Shift/Reduce [See](https://www.epaperpress.com/lexandyacc/thy.html)
