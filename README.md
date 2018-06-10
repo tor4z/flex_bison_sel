@@ -30,6 +30,26 @@ to report an error if the input rules don’t cover all possible input.
 
 6. Flex output[See](https://stackoverflow.com/questions/16995864/how-to-redirect-yyout-to-char-buffer-in-gnu-flex)
 
+7. Hack due to limited lookahead
+```
+/* flex will match the longest */
+ON 			{ return ON; }
+ON[ \t\n]+DUPLICATE 	{ return ONDUPLICATE; } 
+
+EXISTS	 		{ yylval.subtok = 0; return EXISTS; }
+NOT[ \t\n]+EXISTS	{ yylval.subtok = 1; return EXISTS; }
+
+```
+Also note that the phrases NOT EXISTS and ON DUPLICATE are recognized as single tokens;
+this is to avoid shift/reduce conflicts in the parser because of other contexts where
+NOT and ON can appear. 
+
+8. Hack for BETWEEN ... AND ... return special AND token if BETWEEN seen
+```
+<BTWMODE>AND	{ BEGIN INITIAL; return AND; }
+AND		{ return ANDOP; }
+```
+
 ## Bison quick notes
 
 1. Advanced yylval: %union [More](https://www.tldp.org/HOWTO/Lex-YACC-HOWTO-6.html)
