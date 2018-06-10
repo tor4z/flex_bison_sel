@@ -73,6 +73,24 @@ yy_switch_to_buffer(bp); /* tell it to use the buffer we just made */
 yylex(); 		 /* or yyparse() or whatever calls the scanner*/
 
 ```
+11. `yy_buffer_state` Struct Reference
+Since `yy_buf_pos` field can remenber the position of the buffer,
+So when we use `yy_switch_to_buffer` to switch old buffer back, 
+we can continue to parse from the old position **NOT** from the begin of the file.
+```c
+FILE * 		yy_input_file
+char * 		yy_ch_buf	/* input buffer */
+char * 		yy_buf_pos 	/* current position in input buffer */
+yy_size_t 	yy_buf_size	* Size of input buffer in bytes, not including room for EOB */
+int 		yy_n_chars
+int 		yy_is_our_buffer
+int 		yy_is_interactive
+int 		yy_at_bol
+int 		yy_fill_buffer
+int 		yy_buffer_status
+
+/* http://www.ks.uiuc.edu/Research/vmd/doxygen/AtomLexer_8C-source.html */
+```
 
 ## Bison quick notes
 
