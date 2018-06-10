@@ -14,8 +14,8 @@ to be turned into subsequent tokens.
 
 4. the three levels of input management are:
 * Setting yyin to read the desired file(s)
-* Creating and using YY\_BUFFER\_STATE input buffers
-* Redefining YY\_INPUT
+* Creating and using `YY_BUFFER_STATE` input buffers
+* Redefining `YY_INPUT`
 
 5. Harking back to the earliest versions of lex, unless you tell it
 otherwise, flex acts as though there is a default rule at the end of the scanner that copies
@@ -28,7 +28,7 @@ otherwise unmatched input to yyout.
 `%option nodefault` at the top of the scanner to tell it not to add a default rule and rather
 to report an error if the input rules don’t cover all possible input. 
 
-6. Flex output[See](https://stackoverflow.com/questions/16995864/how-to-redirect-yyout-to-char-buffer-in-gnu-flex)
+6. Flex output [See](https://stackoverflow.com/questions/16995864/how-to-redirect-yyout-to-char-buffer-in-gnu-flex)
 
 7. Hack due to limited lookahead
 ```
@@ -50,6 +50,30 @@ NOT and ON can appear.
 AND		{ return ANDOP; }
 ```
 
+9. State management
+```
+/* store old state and restore */
+"/*" 		{ oldstate = YY_START; BEGIN COMMENT; }
+<COMMENT>"*/" 	{ BEGIN oldstate; }
+<COMMENT>.|\n
+```
+
+10. The default input behavior of a flex scanner is approximately this:
+```
+YY_BUFFER_STATE bp;
+extern FILE* yyin;
+/* ... whatever the program does before the first call to the scanner */
+
+if(!yyin) yyin = stdin;  /* default input is stdin */
+bp = yy_create_buffer(yyin,YY_BUF_SIZE );
+
+/* YY_BUF_SIZE defined by flex, typically 16K */
+
+yy_switch_to_buffer(bp); /* tell it to use the buffer we just made */
+yylex(); 		 /* or yyparse() or whatever calls the scanner*/
+
+```
+
 ## Bison quick notes
 
 1. Advanced yylval: %union [More](https://www.tldp.org/HOWTO/Lex-YACC-HOWTO-6.html)
@@ -57,6 +81,7 @@ AND		{ return ANDOP; }
 2. Shift/Reduce [See](https://www.epaperpress.com/lexandyacc/thy.html)
 
 3. RPN Style
+
 ```
 expr: NAME 		{ emit("NAME %s", $1); }
     | INTNUM 		{ emit("NUMBER %d", $1); }
@@ -66,4 +91,13 @@ expr: NAME 		{ emit("NAME %s", $1); }
     | expr '/' expr 	{ emit("DIV"); }
     ;
  ```
-When it parses a+2*3, it emits NAME a, NUMBER 2, NUMBER 3, MUL, ADD.
+When it parses `a+2*3`, it emits NAME a, NUMBER 2, NUMBER 3, MUL, ADD.
+
+4. There are a few character tokens like ';' that aren’t operators and so have no prece-
+dence that didn’t have to be defined.
+
+5. bison’s precedence rules normally use the precedence of the rightmost token in a rule
+
+6. Default action $$ = $1 for rules with no explicit action.
+
+7. Bison starts the numbers for named tokens at 258
