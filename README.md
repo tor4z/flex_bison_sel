@@ -35,3 +35,15 @@ to report an error if the input rules don’t cover all possible input.
 1. Advanced yylval: %union [More](https://www.tldp.org/HOWTO/Lex-YACC-HOWTO-6.html)
 
 2. Shift/Reduce [See](https://www.epaperpress.com/lexandyacc/thy.html)
+
+3. RPN Style
+```
+expr: NAME 		{ emit("NAME %s", $1); }
+    | INTNUM 		{ emit("NUMBER %d", $1); }
+    | expr '+' expr 	{ emit("ADD"); }
+    | expr '-' expr 	{ emit("SUB"); }
+    | expr '*' expr 	{ emit("MUL"); }
+    | expr '/' expr 	{ emit("DIV"); }
+    ;
+ ```
+When it parses a+2*3, it emits NAME a, NUMBER 2, NUMBER 3, MUL, ADD.
