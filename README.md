@@ -109,7 +109,7 @@ expr: NAME 		{ emit("NAME %s", $1); }
     | expr '*' expr 	{ emit("MUL"); }
     | expr '/' expr 	{ emit("DIV"); }
     ;
- ```
+```
 When it parses `a+2*3`, it emits NAME a, NUMBER 2, NUMBER 3, MUL, ADD.
 
 4. There are a few character tokens like ';' that aren’t operators and so have no prece-
@@ -120,3 +120,18 @@ dence that didn’t have to be defined.
 6. Default action $$ = $1 for rules with no explicit action.
 
 7. Bison starts the numbers for named tokens at 258
+
+8. Enabling Traces
+
+There are several means to enable compilation of trace facilities:
+
+* the macro YYDEBUG
+* the option -t (POSIX Yacc compliant)
+* the option --debug (Bison extension)
+* the directive ‘%debug’
+* the variable ‘parse.trace’
+
+We suggest that you always enable the trace option so that debugging is always possible.
+
+Once you have compiled the program with trace facilities, the way to request a trace is to store a nonzero value in
+the variable yydebug. You can do this by making the C code do it (in main, perhaps), or you can alter the value with a C debugger.
