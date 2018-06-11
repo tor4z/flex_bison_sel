@@ -134,4 +134,5 @@ There are several means to enable compilation of trace facilities:
 We suggest that you always enable the trace option so that debugging is always possible.
 
 Once you have compiled the program with trace facilities, the way to request a trace is to store a nonzero value in
-the variable yydebug. You can do this by making the C code do it (in main, perhaps), or you can alter the value with a C debugger.
+the variable yydebug. You can do this by making the C code do it (in main, perhaps), or you can alter the value with
+a C debugger. [See also](https://www.gnu.org/software/bison/manual/html_node/Enabling-Traces.html)
